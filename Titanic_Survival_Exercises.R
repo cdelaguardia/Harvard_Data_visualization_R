@@ -56,6 +56,23 @@ params <- titanic %>%
 ggplot(titanic_test, aes(sample = Age)) +
   geom_qq(dparams = params)+geom_abline()
 
+# Survival by Sex
 
+titanic %>% ggplot(aes(x = Survived, fill = Sex)) +
+  geom_bar(position = position_dodge()) +
+  labs(title = "Survival by Sex", x = "Survived", y = "Count")
 
+# Survival by Age
+titanic |> ggplot(aes(x = Age, fill = Survived)) + 
+  geom_density(alpha = 0.2) + 
+  labs(title = "Density Plot of Age by Survival Status", x = "Age", y = "Count")
+
+# Survival by Fare
+
+titanic |> filter(Fare != 0) %>% ggplot(aes(Survived, Fare)) +
+  geom_boxplot() + 
+  labs(title = "Boxplot of Fare Grouped by Survival Status", x = "Survived", y = "Fare") +
+  scale_y_continuous(trans = "log2") +
+  geom_jitter(alpha = 0.4, width = 0.2, height = 0) +
+  theme_bw()
 
