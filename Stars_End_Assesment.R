@@ -58,6 +58,12 @@ stars |> filter(temp < 5000, magnitude < 0) |> ggplot(aes(x = temp, y = magnitud
   scale_y_reverse() +
   scale_x_continuous(trans = "log10") +  geom_label_repel()
 
+# Remove the text labels and color the points by star type. This classification describes
+#  the properties of the star's spectrum, the amount of light produced at various wavelengths.
+stars |> ggplot(aes(temp, magnitude, color = type)) +
+  geom_point() +
+  scale_y_reverse() +
+  scale_x_continuous("log10")
   
   
   
