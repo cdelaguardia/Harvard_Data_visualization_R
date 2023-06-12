@@ -81,7 +81,18 @@ titanic |> filter(Fare != 0) %>% ggplot(aes(Survived, Fare)) +
 titanic |> ggplot(aes(Pclass, fill = Survived)) +
   geom_bar()
 
-#proportion
+  #proportion
 titanic |> ggplot(aes(Pclass, fill = Survived)) +
   geom_bar(position = position_fill())
+
+
+# Survival by Age, Sex and Passenger Class
+
+titanic |> ggplot(aes(x = Age, fill = factor(Survived))) +
+  geom_density(alpha = 0.5) +
+  facet_grid(Sex ~ Pclass) +
+  labs(title = "Density Plots of Age by Survival Status",
+       x = "Age",
+       y = "Count") +
+  scale_fill_discrete(name = "Survival Status")
 
