@@ -34,3 +34,23 @@ params <- stars |> summarize(mean = mean(temp), sd = sd(temp))
 ggplot(stars, aes(sample = temp)) +
   geom_qq(dparams = params)+geom_abline()
 
+# Make a scatter plot of the data with temperature on the x-axis and
+#  magnitude on the y-axis and examine the relationship between the variables.
+#  Recall that lower magnitude means a more luminous (brighter) star.
+# Most stars follow a _______________ trend. These are called main sequence stars.
+
+stars |> ggplot(aes(x = temp, y = magnitude)) +
+  geom_point() +
+  scale_y_reverse() +
+  scale_x_continuous(trans = "log10")
+
+# The least lumninous star in the sample with a surface temperature over 
+# 5000K is _________.
+stars |> filter(temp > 5000, magnitude > 0) |> ggplot(aes(x = temp, y = magnitude, label = star)) +
+  geom_point() +
+  scale_y_reverse() +
+  scale_x_continuous(trans = "log10") +  geom_label_repel()
+  
+  
+  
+
