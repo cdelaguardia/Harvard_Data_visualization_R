@@ -50,6 +50,14 @@ stars |> filter(temp > 5000, magnitude > 0) |> ggplot(aes(x = temp, y = magnitud
   geom_point() +
   scale_y_reverse() +
   scale_x_continuous(trans = "log10") +  geom_label_repel()
+
+# The two stars with lowest temperature and highest luminosity are known as supergiants.
+#  The two supergiants in this dataset are ____________.
+stars |> filter(temp < 5000, magnitude < 0) |> ggplot(aes(x = temp, y = magnitude, label = star)) +
+  geom_point() +
+  scale_y_reverse() +
+  scale_x_continuous(trans = "log10") +  geom_label_repel()
+
   
   
   
