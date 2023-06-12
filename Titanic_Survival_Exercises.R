@@ -96,3 +96,4 @@ titanic |> ggplot(aes(x = Age, fill = factor(Survived))) +
        y = "Count") +
   scale_fill_discrete(name = "Survival Status")
 
+
