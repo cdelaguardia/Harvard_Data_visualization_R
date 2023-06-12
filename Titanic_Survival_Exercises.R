@@ -76,3 +76,12 @@ titanic |> filter(Fare != 0) %>% ggplot(aes(Survived, Fare)) +
   geom_jitter(alpha = 0.4, width = 0.2, height = 0) +
   theme_bw()
 
+# Survival by Passenger Class
+
+titanic |> ggplot(aes(Pclass, fill = Survived)) +
+  geom_bar()
+
+#proportion
+titanic |> ggplot(aes(Pclass, fill = Survived)) +
+  geom_bar(position = position_fill())
+
