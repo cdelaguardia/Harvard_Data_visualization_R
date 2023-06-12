@@ -18,3 +18,19 @@ magnitude_sd <- sd(stars$magnitude)
 
 stars |> ggplot(aes(magnitude)) + 
   geom_density()
+
+# Examine the distribution of star temperature.
+
+# Temperature histogram
+stars %>%
+  ggplot(aes(temp)) +
+  geom_histogram(bins = 30, fill = "lightblue", color = "black") +
+  labs(x = "Temperature", y = "Count") +
+  theme_minimal()
+
+# Temperature QQ-plot 
+params <- stars |> summarize(mean = mean(temp), sd = sd(temp))
+
+ggplot(stars, aes(sample = temp)) +
+  geom_qq(dparams = params)+geom_abline()
+
