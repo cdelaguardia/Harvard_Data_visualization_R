@@ -58,3 +58,10 @@ co2_time <- historic_co2 |> filter(!is.na(co2)) |>
   ggplot(aes(x = year, y = co2, color = source )) +
   geom_line()
 
+# Use the co2_time plot saved above. Change the limits as directed to
+#  investigate the rate of change in co2 over various periods with spikes
+#  in co2 concentration.
+# Change the x-axis limits to -3000 and 2018 to investigate modern changes
+#  in co2. About how many years did it take for co2 to rise from its stable
+#  level around 275 ppmv to the current level of over 400 ppmv?
+co2_time + xlim(-3000, 2018)
