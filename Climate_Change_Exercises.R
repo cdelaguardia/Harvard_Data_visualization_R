@@ -40,3 +40,13 @@ index_first_year_temp <-  which(temp_carbon$year == first_year_temp)
 
 print(paste("The temp anomaly in",temp_carbon$year[index_first_year_temp], 
             "was of", temp_carbon$temp_anomaly[index_first_year_temp]))
+
+
+# Make a time series line plot of carbon emissions (carbon_emissions)
+#  from the temp_carbon dataset. The y-axis is metric tons of carbon
+#  emitted per year.
+
+temp_carbon |> filter(!is.na(carbon_emissions)) |>
+  ggplot(aes(x = year, y = carbon_emissions)) +
+  geom_point() +
+  geom_line()
