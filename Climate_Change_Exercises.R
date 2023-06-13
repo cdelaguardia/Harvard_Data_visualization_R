@@ -50,3 +50,11 @@ temp_carbon |> filter(!is.na(carbon_emissions)) |>
   ggplot(aes(x = year, y = carbon_emissions)) +
   geom_point() +
   geom_line()
+
+# Make a line plot of co2 concentration over time (year), coloring by
+#  the measurement source (source). Save this plot as co2_time for later use.
+
+co2_time <- historic_co2 |> filter(!is.na(co2)) |>
+  ggplot(aes(x = year, y = co2, color = source )) +
+  geom_line()
+
